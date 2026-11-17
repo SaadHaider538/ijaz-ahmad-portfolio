@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import ServiceDetail from './components/ServiceDetail';
 import { services } from './data';
 import './service-pages.css';
+import { applyPageSeo } from './seo.js';
 import Insights, { InsightsPreview, InsightDetail } from './components/Insights';
 import { insights } from './insightsData';
 
@@ -49,7 +50,7 @@ export default function App() {
 
   // Reset scroll after route changes; retain intentional section anchors.
   useLayoutEffect(() => {
-    document.title = pageTitles[pathname] || 'Page Not Found | IJAZ AHMAD & Co.';
+    applyPageSeo(pathname, pageTitles[pathname]);
     if (legacyTarget) return;
     const target = location.hash ? document.getElementById(location.hash.slice(1)) : null;
     if (target && location.hash !== '#home') {

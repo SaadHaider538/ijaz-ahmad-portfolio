@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://ijazahmadca.vercel.app/sitemap.xml
