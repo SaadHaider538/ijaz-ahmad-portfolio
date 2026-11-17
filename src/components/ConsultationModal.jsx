@@ -77,11 +77,20 @@ export default function ConsultationModal({ isOpen, onClose }) {
   };
 
   const handleWhatsApp = (event) => {
-    if (submissionLock.current) return;
-    const data = getValidData(event.currentTarget.form);
-    if (data) openWhatsApp(buildWhatsAppConsultationMessage(data));
-  };
+  if (submissionLock.current) return;
 
+  const data = getValidData(event.currentTarget.form);
+
+  if (!data) return;
+
+  openWhatsApp(buildWhatsAppConsultationMessage(data));
+
+  setSubmissionState({
+    status: 'info',
+    message:
+      'Your enquiry has been prepared for WhatsApp. Please review the message and press Send to complete your request.',
+  });
+};
   const closeFromBackdrop = (event) => {
     if (event.target === event.currentTarget) onClose();
   };

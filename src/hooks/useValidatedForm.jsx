@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 export default function useValidatedForm(validate) {
   const [errors, setErrors] = useState({});
@@ -32,7 +32,9 @@ export default function useValidatedForm(validate) {
     'aria-describedby': errors[name] ? `${name}-error` : undefined,
   });
 
-  const resetErrors = () => setErrors({});
+  const resetErrors = useCallback(() => {
+  setErrors({});
+}, []);
 
   return { getValidData, clearFieldError, errorFor, a11yFor, resetErrors };
 }
