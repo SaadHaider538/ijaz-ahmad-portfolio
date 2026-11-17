@@ -1,4 +1,5 @@
-﻿import { ArrowRight, BadgeCheck, LineChart, ShieldCheck } from 'lucide-react';
+﻿import { Link } from 'react-router-dom';
+import { ArrowRight, BadgeCheck, LineChart, ShieldCheck } from 'lucide-react';
 
 export default function Hero({ onRequestConsultation }) {
   return (
@@ -27,9 +28,9 @@ export default function Hero({ onRequestConsultation }) {
             </p>
 
             <div className="hero-actions">
-              <a className="button button--gold" href="#services">
+              <Link className="button button--gold" to="/services">
                 Explore Our Services <ArrowRight size={17} />
-              </a>
+              </Link>
               <button className="button button--outline" type="button" onClick={onRequestConsultation}>
                 Contact Us
               </button>

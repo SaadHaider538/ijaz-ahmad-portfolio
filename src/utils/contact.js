@@ -152,7 +152,13 @@ export async function sendEnquiryEmail(data) {
         },
       }),
     });
-    if (!response.ok) throw new Error('The enquiry could not be submitted at this time.');
+    if (!response.ok) {
+  const errorMessage = await response.text();
+
+  console.error('EmailJS Error:', response.status, errorMessage);
+
+  throw new Error(`EmailJS Error ${response.status}: ${errorMessage}`);
+}
     return { delivered: true, fallback: false };
   } finally {
     globalThis.clearTimeout(timeoutId);

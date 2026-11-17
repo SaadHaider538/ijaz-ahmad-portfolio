@@ -1,49 +1,67 @@
-﻿import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
+import { Link, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import { About, Approach, Industries, Leadership, Services, WhyUs } from './components/Sections';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
 
+const pageTitles = {
+  '/': 'IJAZ AHMAD & Co. | Chartered Accountants',
+  '/about': 'About Us | IJAZ AHMAD & Co.',
+  '/services': 'Services | IJAZ AHMAD & Co.',
+  '/industries': 'Industries | IJAZ AHMAD & Co.',
+  '/leadership': 'Leadership | IJAZ AHMAD & Co.',
+  '/contact': 'Contact Us | IJAZ AHMAD & Co.',
+};
+
+const legacyRoutes = {
+  '#about': '/about',
+  '#services': '/services',
+  '#industries': '/industries',
+  '#leadership': '/leadership',
+  '#contact': '/contact',
+  '#why-us': '/about#why-us',
+  '#approach': '/about#approach',
+};
 
 export default function App() {
-  const [serviceRequest, setServiceRequest] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const mainRef = useRef(null);
+  const pathname = location.pathname.replace(/\/+$/, '') || '/';
+  const isHome = pathname === '/';
+  const legacyTarget = isHome ? legacyRoutes[location.hash] : undefined;
 
- const openConsultation = useCallback(() => {
-  const contactSection = document.getElementById('contact');
+  const openConsultation = useCallback(() => navigate('/contact'), [navigate]);
+  const discussService = useCallback((service) => {
+    navigate('/contact', { state: { serviceRequest: { service, requestedAt: Date.now() } } });
+  }, [navigate]);
 
-  if (!contactSection) return;
+  // Reset scroll after route changes; retain intentional section anchors.
+  useLayoutEffect(() => {
+    document.title = pageTitles[pathname] || 'Page Not Found | IJAZ AHMAD & Co.';
+    if (legacyTarget) return;
+    const target = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+    if (target && location.hash !== '#home') {
+      target.scrollIntoView({ block: 'start', behavior: 'instant' });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [pathname, location.hash, legacyTarget]);
 
-  if (window.location.hash !== '#contact') {
-    window.history.pushState(null, '', '#contact');
-  }
-
-  contactSection.scrollIntoView({
-    block: 'start',
-  });
-}, []);
-  const discussService = useCallback((service) => setServiceRequest({ service, requestedAt: Date.now() }), []);
-
+  // Existing CSS hides reveal elements until observed. Reconnect on every page.
   useEffect(() => {
+    if (legacyTarget) return undefined;
     const selectors = [
-      '.section-heading',
-      '.service-card',
-      '.about-copy',
-      '.about-callout',
-      '.value-card',
-      '.why-copy',
-      '.why-card',
-      '.why-callout',
-      '.why-strip',
-      '.process-step',
-      '.industry-card',
-      '.leader-card',
-      '.contact-copy',
-      '.contact-form',
+      '.section-heading', '.service-card', '.about-copy', '.about-callout',
+      '.value-card', '.why-copy', '.why-card', '.why-callout', '.why-strip',
+      '.process-step', '.industry-card', '.leader-card', '.contact-copy', '.contact-form',
     ].join(', ');
-    const nodes = document.querySelectorAll(selectors);
+    const nodes = mainRef.current?.querySelectorAll(selectors);
+    if (!nodes) return undefined;
 
-    if (!('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       nodes.forEach((node) => node.classList.add('visible'));
       return undefined;
     }
@@ -56,27 +74,39 @@ export default function App() {
         }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px 60px' });
-
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname, legacyTarget]);
 
   return (
     <>
-      <Navbar onRequestConsultation={openConsultation} />
-      <main>
-        <Hero onRequestConsultation={openConsultation} />
-        <Services onDiscussService={discussService} />
-        <About />
-        <WhyUs />
-        <Approach />
-        <Industries />
-        <Leadership />
-        
-        <Contact serviceRequest={serviceRequest} />
+      <Navbar />
+      <main ref={mainRef} id="main-content" key={pathname} style={isHome ? undefined : { paddingTop: 'var(--navbar-height, 78px)' }}>
+        <Routes>
+          <Route path="/" element={legacyTarget ? <Navigate to={legacyTarget} replace /> : (
+            <>
+              <Hero onRequestConsultation={openConsultation} />
+              <Services onDiscussService={discussService} />
+              <About />
+            </>
+          )} />
+          <Route path="/about" element={<><About /><WhyUs /><Approach /></>} />
+          <Route path="/services" element={<Services onDiscussService={discussService} />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/leadership" element={<Leadership />} />
+          <Route path="/contact" element={<Contact serviceRequest={location.state?.serviceRequest ?? null} />} />
+          <Route path="*" element={(
+            <section className="section">
+              <div className="container">
+                <p className="eyebrow">404 — Page Not Found</p>
+                <h1>We could not find this page.</h1>
+                <Link className="button button--navy" to="/">Return to Home</Link>
+              </div>
+            </section>
+          )} />
+        </Routes>
       </main>
       <Footer />
-    
     </>
   );
 }

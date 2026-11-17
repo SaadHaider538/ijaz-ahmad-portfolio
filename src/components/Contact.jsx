@@ -68,12 +68,18 @@ export default function Contact({ serviceRequest }) {
       form.reset();
       setSelectedService('');
       resetErrors();
-    } catch {
-      setSubmissionState({ status: 'error', message: 'We were unable to submit your enquiry at this time. Please try again or continue via WhatsApp.' });
-    } finally {
-      submissionLock.current = false;
-    }
-  };
+    } catch (error) {
+  console.error('Enquiry submission failed:', error);
+
+  setSubmissionState({
+    status: 'error',
+    message:
+      'We were unable to submit your enquiry. Please try again or continue via WhatsApp.',
+    });
+} finally {
+  submissionLock.current = false;
+}
+};
 
   const handleWhatsApp = (event) => {
   if (submissionLock.current) return;
