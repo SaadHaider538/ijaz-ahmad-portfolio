@@ -8,6 +8,8 @@ import Contact from './components/Contact';
 import ServiceDetail from './components/ServiceDetail';
 import { services } from './data';
 import './service-pages.css';
+import Insights, { InsightsPreview, InsightDetail } from './components/Insights';
+import { insights } from './insightsData';
 
 const pageTitles = {
   '/': 'IJAZ AHMAD & Co. | Chartered Accountants',
@@ -16,6 +18,8 @@ const pageTitles = {
   '/industries': 'Industries | IJAZ AHMAD & Co.',
   '/leadership': 'Leadership | IJAZ AHMAD & Co.',
   '/contact': 'Contact Us | IJAZ AHMAD & Co.',
+  '/insights': 'Insights & Publications | IJAZ AHMAD & Co.',
+  ...Object.fromEntries(insights.map(({ slug, title }) => [`/insights/${slug}`, `${title} | IJAZ AHMAD & Co.`])),
   ...Object.fromEntries(services.map(({ slug, title }) => [`/services/${slug}`, `${title} | IJAZ AHMAD & Co.`])),
 };
 
@@ -25,6 +29,7 @@ const legacyRoutes = {
   '#industries': '/industries',
   '#leadership': '/leadership',
   '#contact': '/contact',
+  '#insights': '/insights',
   '#why-us': '/about#why-us',
   '#approach': '/about#approach',
 };
@@ -92,6 +97,7 @@ export default function App() {
               <Hero onRequestConsultation={openConsultation} />
               <Services onDiscussService={discussService} />
               <About />
+              <InsightsPreview />
             </>
           )} />
           <Route path="/about" element={<><About /><WhyUs /><Approach /></>} />
@@ -99,6 +105,10 @@ export default function App() {
           {services.map((service) => (
             <Route key={service.slug} path={`/services/${service.slug}`}
               element={<ServiceDetail service={service} onDiscussService={discussService} />} />
+          ))}
+          <Route path="/insights" element={<Insights />} />
+          {insights.map((article) => (
+            <Route key={article.slug} path={`/insights/${article.slug}`} element={<InsightDetail article={article} />} />
           ))}
           <Route path="/industries" element={<Industries />} />
           <Route path="/leadership" element={<Leadership />} />
