@@ -1,5 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
-import { ArrowRight, BadgeCheck, LineChart, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function Hero({ onRequestConsultation }) {
   return (
@@ -37,15 +37,17 @@ export default function Hero({ onRequestConsultation }) {
             </div>
           </div>
 
-          <div className="hero-visual reveal" aria-label="Corporate advisory profile visual">
-            <div className="portrait-frame">
-              <div className="portrait-grid">
-                <img className="profile-photo hero-profile-photo" src="/images/ijaz-ahmad-profile.jpeg" alt="Ijaz Ahmad, Chartered Accountant" width="900" height="1157" decoding="async" fetchPriority="high" onError={(event) => { event.currentTarget.hidden = true; }} />
+          <div className="hero-visual reveal personal-hero-visual">
+            <figure className="personal-hero-card">
+              <div className="personal-hero-photo">
+                <img src="/images/ijaz-ahmad-profile.jpeg" alt="Ijaz Ahmad, Chartered Accountant" width="900" height="1157" decoding="async" fetchPriority="high" />
               </div>
-              <div className="portrait-title"><span>Firm Profile</span><strong>Trusted advisory for stronger controls, better decisions, and sustainable growth.</strong></div>
-              <div className="floating-badge"><BadgeCheck size={22} /><span><b>Audit • Tax • Advisory</b>Integrated professional support</span></div>
-              <LineChart className="portrait-chart" />
-            </div>
+              <figcaption>
+                <strong>Ijaz Ahmad, FCA</strong>
+                <span>Chartered Accountant</span>
+                <Link to="/leadership" className="personal-profile-link">View Professional Profile <ArrowRight size={15} /></Link>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

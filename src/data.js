@@ -88,7 +88,7 @@ export const aboutPrinciples = [
 
 export const vision = {
   title: 'Enabling Smarter, Stronger & More Resilient Business',
-  text: 'Supporting organisations with financial clarity, sound governance and practical advisory that strengthenslong-term resilience.',
+  text: 'Supporting organisations with financial clarity, sound governance and practical advisory that strengthens long-term resilience.',
 };
 
 export const mission = {

@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import ServiceDetail from './components/ServiceDetail';
 import { services } from './data';
 import './service-pages.css';
+import './ui-refinement.css';
 import { applyPageSeo } from './seo.js';
 import Insights, { InsightsPreview, InsightDetail } from './components/Insights';
 import { insights } from './insightsData';
@@ -17,7 +18,7 @@ const pageTitles = {
   '/about': 'About Us | IJAZ AHMAD & Co.',
   '/services': 'Services | IJAZ AHMAD & Co.',
   '/industries': 'Industries | IJAZ AHMAD & Co.',
-  '/leadership': 'Leadership | IJAZ AHMAD & Co.',
+  '/leadership': 'Professional Profile | IJAZ AHMAD & Co.',
   '/contact': 'Contact Us | IJAZ AHMAD & Co.',
   '/insights': 'Insights & Publications | IJAZ AHMAD & Co.',
   ...Object.fromEntries(insights.map(({ slug, title }) => [`/insights/${slug}`, `${title} | IJAZ AHMAD & Co.`])),

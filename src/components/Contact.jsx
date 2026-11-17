@@ -140,7 +140,7 @@ export default function Contact({ serviceRequest }) {
           </div>
           <div className="form-row">
             <label htmlFor="enquiry-phone">Contact Number<input id="enquiry-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength="30" placeholder="+92 300 0000000" required {...a11yFor('phone')} />{errorFor('phone')}</label>
-            <label htmlFor="enquiry-service">Service Required<select id="enquiry-service" name="service" value={selectedService} onChange={(event) => setSelectedService(event.target.value)} required {...a11yFor('service')}><option value="" disabled>Select the service relevant to your requirement</option>{professionalServices.map((service) => <option key={service} value={service}>{service}</option>)}</select>{errorFor('service')}</label>
+            <label htmlFor="enquiry-service">Service Required<select id="enquiry-service" name="service" value={selectedService} onChange={(event) => setSelectedService(event.target.value)} required {...a11yFor('service')}><option value="" disabled>Select a service</option>{professionalServices.map((service) => <option key={service} value={service}>{service}</option>)}</select>{errorFor('service')}</label>
           </div>
           <label htmlFor="enquiry-message">Brief Description of Requirement<textarea id="enquiry-message" name="message" rows="5" maxLength="3000" placeholder="Please provide a brief overview of the matter and the professional assistance you require." required {...a11yFor('message')} />{errorFor('message')}</label>
           <div className="enquiry-actions">

@@ -7,7 +7,7 @@ const links = [
   { label: 'About Us', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Industries', to: '/industries' },
-  { label: 'Leadership', to: '/leadership' },
+  { label: 'Professional Profile', to: '/leadership' },
   { label: 'Insights', to: '/insights' },
 ];
 

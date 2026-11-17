@@ -111,7 +111,7 @@ export function WhyUs() {
           <article className="why-callout">
             <p className="panel-label">Business Value</p>
             <h3>Long-term advisory built around governance, compliance and practical decision support.</h3>
-            <p>The firm's profile emphasises a disciplined, client-centric approach with attention to sustainable business outcomes.</p>
+            <p>We focus on disciplined, client-centred professional support and sustainable business outcomes.</p>
           </article>
         </div>
         <div className="why-grid">
@@ -165,7 +165,7 @@ export function Industries() {
         <SectionHeading
           eyebrow="Industry Experience"
           title="Sectors Served"
-          text="Experience across the industries and organisation types identified in the firm presentation."
+          text="Professional services across diverse business sectors and organisation types."
         />
         <div className="industry-grid">
           {industries.map(({ icon: Icon, title }) => (
@@ -181,23 +181,35 @@ export function Industries() {
 }
 
 export function Leadership() {
+  const profile = leadership.find((person) => person.name === 'Ijaz Ahmad');
+  if (!profile) return null;
+
   return (
-    <section className="section leadership" id="leadership">
+    <section className="section leadership personal-profile-page" id="leadership">
       <div className="container">
-        <SectionHeading
-          eyebrow="Leadership Team"
-          title="Approved Team Profiles"
-          text="Leadership profiles shown using the names and qualifications provided in the approved firm brief."
-        />
-        <div className="leader-grid">
-          {leadership.map(({ icon: Icon, name, qualification, text }) => (
-            <article className="leader-card" key={name}>
-              <div className="leader-icon"><Icon /></div>
-              <h3>{name}</h3>
-              <p className="leader-qual">{qualification}</p>
-              <p>{text}</p>
-            </article>
-          ))}
+        <header className="personal-profile-heading">
+          <p className="eyebrow">Professional Profile</p>
+          <h1>Meet Ijaz Ahmad</h1>
+          <p>Professional expertise in audit, taxation and business advisory.</p>
+        </header>
+        <div className="personal-profile-layout">
+          <figure className="personal-profile-portrait">
+            <img src="/images/ijaz-ahmad-profile.jpeg" alt="Ijaz Ahmad, Chartered Accountant" width="900" height="1157" decoding="async" />
+            <figcaption>{profile.name}, {profile.qualification}</figcaption>
+          </figure>
+          <div className="personal-profile-copy">
+            <p className="panel-label">Professional Qualification</p>
+            <h2>{profile.name}, {profile.qualification}</h2>
+            <p className="personal-profile-role">Chartered Accountant</p>
+            <p>Ijaz Ahmad is a Chartered Accountant. Through this website, clients can explore professional services in audit and assurance, taxation and regulatory compliance, and financial and business advisory.</p>
+            <h3>Areas of professional support</h3>
+            <ul className="personal-focus-list">
+              {services.map(({ slug, title }) => (
+                <li key={slug}><Link to={`/services/${slug}`}><Check size={16} aria-hidden="true" />{title}<ArrowUpRight size={15} aria-hidden="true" /></Link></li>
+              ))}
+            </ul>
+            <Link className="button button--navy" to="/contact">Contact Us <ArrowUpRight size={16} /></Link>
+          </div>
         </div>
       </div>
     </section>

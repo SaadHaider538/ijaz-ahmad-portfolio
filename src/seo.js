@@ -8,7 +8,7 @@ const descriptions = {
   '/about': 'Learn about IJAZ AHMAD & Co., its professional values, approach and accounting and advisory services in Pakistan.',
   '/services': 'Explore audit and assurance, tax and regulatory compliance, and advisory and consulting services.',
   '/industries': 'Explore the sectors served by IJAZ AHMAD & Co., including SMEs, financial services, development and industry.',
-  '/leadership': 'Meet the professionals at IJAZ AHMAD & Co. and explore their qualifications.',
+  '/leadership': 'Meet Ijaz Ahmad, FCA, Chartered Accountant, and explore professional services in audit, taxation and advisory.',
   '/contact': 'Contact IJAZ AHMAD & Co. to discuss your audit, tax, regulatory compliance or advisory requirements.',
   '/insights': 'Explore practical professional insights on taxation, audit, financial reporting, governance and business management.',
   ...Object.fromEntries(services.map(s => ['/services/' + s.slug, s.summary])),

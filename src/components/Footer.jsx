@@ -27,7 +27,7 @@ export default function Footer() {
           <Link to="/about#why-us">Why Us</Link>
           <Link to="/about#approach">Our Approach</Link>
           <Link to="/industries">Industries</Link>
-          <Link to="/leadership">Leadership</Link>
+          <Link to="/leadership">Professional Profile</Link>
           <Link to="/insights">Insights &amp; Publications</Link>
           <Link to="/contact">Contact</Link>
         </div>
