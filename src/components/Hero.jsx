@@ -1,5 +1,4 @@
 ﻿import { ArrowRight, BadgeCheck, LineChart, ShieldCheck } from 'lucide-react';
-import { heroHighlights } from '../data';
 
 export default function Hero({ onRequestConsultation }) {
   return (
@@ -8,22 +7,35 @@ export default function Hero({ onRequestConsultation }) {
         <div className="hero-grid container">
           <div className="hero-copy reveal">
             <p className="eyebrow">
-              {heroHighlights.map((item, index) => (
-                <span key={item}>
-                  {item}
-                  {index < heroHighlights.length - 1 && <i />}
-                </span>
-              ))}
+              <span>AUDIT</span>
+              <i />
+              <span>TAX</span>
+              <i />
+              <span>ADVISORY</span>
             </p>
+
             <h1>IJAZ AHMAD &amp; Co.</h1>
             <h2>Chartered Accountants</h2>
-            <p className="hero-tagline">Your Trusted Partner in <em>Financial Clarity, Compliance &amp; Strategic Growth</em></p>
-            <p className="hero-description">Professional audit, taxation, regulatory compliance, financial advisory, risk management and business consulting services designed to help businesses make clearer decisions and strengthen governance.</p>
+
+            <p className="hero-tagline">
+              Building Trust. Delivering Clarity.<em> Enabling Growth.</em>
+            </p>
+
+            <p className="hero-description">
+              Professional assurance, taxation, regulatory compliance and business advisory
+              solutions designed to strengthen governance and support sustainable business growth.
+            </p>
+
             <div className="hero-actions">
-              <button className="button button--gold" type="button" onClick={onRequestConsultation}>Request a Consultation <ArrowRight size={17} /></button>
-              <a className="button button--outline" href="#services">Explore Services</a>
+              <a className="button button--gold" href="#services">
+                Explore Our Services <ArrowRight size={17} />
+              </a>
+              <button className="button button--outline" type="button" onClick={onRequestConsultation}>
+                Contact Us
+              </button>
             </div>
           </div>
+
           <div className="hero-visual reveal" aria-label="Corporate advisory profile visual">
             <div className="portrait-frame">
               <div className="portrait-grid">
@@ -36,6 +48,7 @@ export default function Hero({ onRequestConsultation }) {
           </div>
         </div>
       </div>
+
       <div className="trust-bar" aria-label="Firm positioning highlights">
         <div className="container trust-items">
           {['Financial Clarity', 'Compliance', 'Governance', 'Assurance', 'Advisory'].map((item, index) => (

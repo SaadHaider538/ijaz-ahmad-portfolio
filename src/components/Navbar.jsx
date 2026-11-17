@@ -3,10 +3,8 @@ import { Menu, X } from 'lucide-react';
 
 const links = [
   { label: 'Home', id: 'home' },
-  { label: 'About', id: 'about' },
+  { label: 'About Us', id: 'about' },
   { label: 'Services', id: 'services' },
-  { label: 'Why Us', id: 'why-us' },
-  { label: 'Our Approach', id: 'approach' },
   { label: 'Industries', id: 'industries' },
   { label: 'Leadership', id: 'leadership' },
   { label: 'Contact', id: 'contact' },
@@ -109,12 +107,12 @@ export default function Navbar({ onRequestConsultation }) {
           <span>IJAZ AHMAD &amp; Co.</span><small>Chartered Accountants</small>
         </a>
         <nav id="main-navigation" ref={navRef} className={`nav-links ${open ? 'is-open' : ''}`} aria-label="Main navigation">
-          {links.map((item) => (
+          {links.filter((item) => item.id !== 'contact').map((item) => (
             <a key={item.id} className={active === item.id ? 'active' : ''} href={`#${item.id}`} aria-current={active === item.id ? 'page' : undefined} onClick={(event) => navigate(event, item.id)}>
               {item.label}
             </a>
           ))}
-          <button className="button button--gold nav-cta" type="button" onClick={() => { setOpen(false); onRequestConsultation(); }}>Request a Consultation</button>
+          <button className="button button--gold nav-cta" type="button" onClick={() => { setOpen(false); onRequestConsultation(); }}>Contact Us</button>
         </nav>
         <button ref={toggleRef} className="menu-toggle" onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-controls="main-navigation" aria-expanded={open}>
           {open ? <X /> : <Menu />}
