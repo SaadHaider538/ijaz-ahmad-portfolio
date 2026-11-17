@@ -76,11 +76,20 @@ export default function Contact({ serviceRequest }) {
   };
 
   const handleWhatsApp = (event) => {
-    if (submissionLock.current) return;
-    const data = getValidData(event.currentTarget.form);
-    if (data) openWhatsApp(buildWhatsAppEnquiryMessage(data));
-  };
+  if (submissionLock.current) return;
 
+  const data = getValidData(event.currentTarget.form);
+
+  if (!data) return;
+
+  openWhatsApp(buildWhatsAppEnquiryMessage(data));
+
+  setSubmissionState({
+    status: 'info',
+    message:
+      'Your enquiry is ready to send via WhatsApp. Please review the prepared message and press Send.',
+  });
+};
   return (
     <section className="section contact" id="contact">
       <div className="container contact-grid">

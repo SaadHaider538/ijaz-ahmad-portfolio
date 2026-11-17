@@ -2,16 +2,26 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import { About, Approach, Industries, Leadership, Services, WhyUs } from './components/Sections';
-import Contact, { ConsultationCTA } from './components/Contact';
 import Footer from './components/Footer';
-import ConsultationModal from './components/ConsultationModal';
+import Contact from './components/Contact';
+
 
 export default function App() {
-  const [consultationOpen, setConsultationOpen] = useState(false);
   const [serviceRequest, setServiceRequest] = useState(null);
 
-  const openConsultation = useCallback(() => setConsultationOpen(true), []);
-  const closeConsultation = useCallback(() => setConsultationOpen(false), []);
+ const openConsultation = useCallback(() => {
+  const contactSection = document.getElementById('contact');
+
+  if (!contactSection) return;
+
+  if (window.location.hash !== '#contact') {
+    window.history.pushState(null, '', '#contact');
+  }
+
+  contactSection.scrollIntoView({
+    block: 'start',
+  });
+}, []);
   const discussService = useCallback((service) => setServiceRequest({ service, requestedAt: Date.now() }), []);
 
   useEffect(() => {
@@ -62,11 +72,11 @@ export default function App() {
         <Approach />
         <Industries />
         <Leadership />
-        <ConsultationCTA onRequestConsultation={openConsultation} />
+        
         <Contact serviceRequest={serviceRequest} />
       </main>
       <Footer />
-      <ConsultationModal isOpen={consultationOpen} onClose={closeConsultation} />
+    
     </>
   );
 }
