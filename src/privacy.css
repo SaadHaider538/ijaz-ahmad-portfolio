@@ -1,0 +1,12 @@
+/* Scoped privacy styles. Existing site styles remain unchanged. */
+.privacy-policy { background: #f5f7fa; color: #0b132b; }
+.privacy-policy .privacy-content { max-width: 900px; }
+.privacy-policy h1 { font-family: var(--serif, Georgia, serif); font-size: clamp(2rem,4vw,3.4rem); line-height: 1.15; margin: 12px 0 16px; }
+.privacy-policy .privacy-intro { color: #475569; line-height: 1.7; max-width: 720px; }
+.privacy-policy .privacy-panel { background: #fff; border: 1px solid #dce3eb; border-top: 3px solid #d4af37; padding: clamp(20px,4vw,40px); margin-top: 28px; }
+.privacy-policy .privacy-panel h2 { font-family: var(--serif, Georgia, serif); font-size: clamp(1.12rem,2vw,1.45rem); margin: 26px 0 8px; line-height: 1.35; color: #0b132b; }
+.privacy-policy .privacy-panel h2:first-child { margin-top: 0; }
+.privacy-policy .privacy-panel p { color: #475569; line-height: 1.75; margin: 0 0 12px; overflow-wrap: anywhere; }
+.privacy-policy .privacy-panel p a, .contact-privacy-notice a { color: #735800; text-decoration: underline; text-underline-offset: 3px; }
+.privacy-policy .privacy-panel .button { margin-top: 16px; }
+.contact-form .contact-privacy-notice { grid-column: 1 / -1; color: #475569; font-size: .82rem; line-height: 1.6; margin: 14px 0 0; }

@@ -10,6 +10,7 @@ const descriptions = {
   '/industries': 'Explore the sectors served by IJAZ AHMAD & Co., including SMEs, financial services, development and industry.',
   '/leadership': 'Meet Ijaz Ahmad, FCA, Chartered Accountant, and explore professional services in audit, taxation and advisory.',
   '/contact': 'Contact IJAZ AHMAD & Co. to discuss your audit, tax, regulatory compliance or advisory requirements.',
+  '/privacy': 'Learn how IJAZ AHMAD & Co. handles website enquiry information and privacy requests.',
   '/insights': 'Explore practical professional insights on taxation, audit, financial reporting, governance and business management.',
   ...Object.fromEntries(services.map(s => ['/services/' + s.slug, s.summary])),
   ...Object.fromEntries(insights.map(a => ['/insights/' + a.slug, a.summary])),

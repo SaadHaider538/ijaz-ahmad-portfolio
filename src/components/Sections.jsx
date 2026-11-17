@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check } from 'lucide-react';
+﻿import { ArrowUpRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { aboutPrinciples, approach, coreValues, industries, leadership, services, trustPoints, vision, mission, whyUs } from '../data';
 
@@ -194,7 +194,7 @@ export function Leadership() {
         </header>
         <div className="personal-profile-layout">
           <figure className="personal-profile-portrait">
-            <img src="/images/ijaz-ahmad-profile.jpeg" alt="Ijaz Ahmad, Chartered Accountant" width="900" height="1157" decoding="async" />
+            <img src="/images/ijaz-ahmad-profile.webp" alt="Ijaz Ahmad, Chartered Accountant" width="900" height="1157" decoding="async" />
             <figcaption>{profile.name}, {profile.qualification}</figcaption>
           </figure>
           <div className="personal-profile-copy">
@@ -215,3 +215,4 @@ export function Leadership() {
     </section>
   );
 }
+

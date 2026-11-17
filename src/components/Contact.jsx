@@ -149,7 +149,8 @@ export default function Contact({ serviceRequest }) {
           </div>
           {submissionState.message && <p className={`form-notice form-notice--${submissionState.status}`} role={submissionState.status === 'error' ? 'alert' : 'status'}>{submissionState.message}</p>}
           <div className="enquiry-assurance"><p><ShieldCheck size={14} />Every enquiry is reviewed based on the nature of the professional assistance required.</p><p><ShieldCheck size={14} />Information submitted through this website will be used for the purpose of reviewing and responding to your enquiry.</p><p><ShieldCheck size={14} />Professional services and scope of engagement will be discussed and agreed separately.</p></div>
-        </form>
+        <p className="contact-privacy-notice">Your information is used to respond to your enquiry. Please do not include confidential documents or credentials. Read our <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy (opens in a new tab)</a>.</p>
+          </form>
       </div>
     </section>
   );

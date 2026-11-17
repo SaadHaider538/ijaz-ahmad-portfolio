@@ -94,3 +94,11 @@
   border-top: 1px solid rgba(212, 175, 55, .25);
   justify-content: center;
 }
+/* Hero loading performance optimization */
+
+.hero .hero-copy,
+.hero .hero-visual {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}

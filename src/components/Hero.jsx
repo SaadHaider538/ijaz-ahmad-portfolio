@@ -40,7 +40,7 @@ export default function Hero({ onRequestConsultation }) {
           <div className="hero-visual reveal personal-hero-visual">
             <figure className="personal-hero-card">
               <div className="personal-hero-photo">
-                <img src="/images/ijaz-ahmad-profile.jpeg" alt="Ijaz Ahmad, Chartered Accountant" width="900" height="1157" decoding="async" fetchPriority="high" />
+                <img src="/images/ijaz-ahmad-profile.webp" alt="Ijaz Ahmad, Chartered Accountant" width="900" height="1157" decoding="async" fetchPriority="high" />
               </div>
               <figcaption>
                 <strong>Ijaz Ahmad, FCA</strong>
@@ -62,3 +62,4 @@ export default function Hero({ onRequestConsultation }) {
     </section>
   );
 }
+

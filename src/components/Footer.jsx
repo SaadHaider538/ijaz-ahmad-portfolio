@@ -30,6 +30,7 @@ export default function Footer() {
           <Link to="/leadership">Professional Profile</Link>
           <Link to="/insights">Insights &amp; Publications</Link>
           <Link to="/contact">Contact</Link>
+          <Link to="/privacy">Privacy Policy</Link>
         </div>
         <div>
           <h3>Services</h3>

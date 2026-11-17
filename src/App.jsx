@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import { About, Approach, Industries, Leadership, Services, WhyUs } from './components/Sections';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import ServiceDetail from './components/ServiceDetail';
 import { services } from './data';
 import './service-pages.css';
@@ -20,6 +21,7 @@ const pageTitles = {
   '/industries': 'Industries | IJAZ AHMAD & Co.',
   '/leadership': 'Professional Profile | IJAZ AHMAD & Co.',
   '/contact': 'Contact Us | IJAZ AHMAD & Co.',
+  '/privacy': 'Privacy Policy | IJAZ AHMAD & Co.',
   '/insights': 'Insights & Publications | IJAZ AHMAD & Co.',
   ...Object.fromEntries(insights.map(({ slug, title }) => [`/insights/${slug}`, `${title} | IJAZ AHMAD & Co.`])),
   ...Object.fromEntries(services.map(({ slug, title }) => [`/services/${slug}`, `${title} | IJAZ AHMAD & Co.`])),
@@ -115,6 +117,7 @@ export default function App() {
           <Route path="/industries" element={<Industries />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/contact" element={<Contact serviceRequest={location.state?.serviceRequest ?? null} />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="*" element={(
             <section className="section">
               <div className="container">
