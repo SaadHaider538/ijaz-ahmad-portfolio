@@ -1,4 +1,4 @@
-﻿import {
+import {
   BadgeCheck,
   BriefcaseBusiness,
   Building2,
@@ -30,6 +30,7 @@ export const services = [
     number: '01',
     title: 'Audit & Assurance',
     service: 'Audit & Assurance',
+    slug: 'audit-assurance',
     summary: 'Independent assurance and audit support aligned to statutory, internal and engagement-specific requirements.',
     items: [
       'Statutory / External Audits',
@@ -46,6 +47,7 @@ export const services = [
     number: '02',
     title: 'Tax & Regulatory Compliance',
     service: 'Tax & Regulatory Compliance',
+    slug: 'tax-regulatory-compliance',
     summary: 'Practical tax and regulatory support to help businesses stay compliant and manage exposure with confidence.',
     items: [
       'Income Tax Advisory & Compliance',
@@ -61,6 +63,7 @@ export const services = [
     number: '03',
     title: 'Advisory & Consulting',
     service: 'Advisory & Consulting',
+    slug: 'advisory-consulting',
     summary: 'Business-focused consulting that supports planning, controls, outsourcing and operational improvement.',
     items: [
       'Financial Planning & Budgeting',
@@ -85,7 +88,7 @@ export const aboutPrinciples = [
 
 export const vision = {
   title: 'Enabling Smarter, Stronger & More Resilient Business',
-  text: 'Supporting organisations with financial clarity, sound governance and practical advisory that strengthens long-term resilience.',
+  text: 'Supporting organisations with financial clarity, sound governance and practical advisory that strengthenslong-term resilience.',
 };
 
 export const mission = {
@@ -230,6 +233,3 @@ export const leadership = [
     text: 'Professional development profile.',
   },
 ];
-
-
-

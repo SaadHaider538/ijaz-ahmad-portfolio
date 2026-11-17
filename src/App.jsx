@@ -5,6 +5,9 @@ import Hero from './components/Hero';
 import { About, Approach, Industries, Leadership, Services, WhyUs } from './components/Sections';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import ServiceDetail from './components/ServiceDetail';
+import { services } from './data';
+import './service-pages.css';
 
 const pageTitles = {
   '/': 'IJAZ AHMAD & Co. | Chartered Accountants',
@@ -13,6 +16,7 @@ const pageTitles = {
   '/industries': 'Industries | IJAZ AHMAD & Co.',
   '/leadership': 'Leadership | IJAZ AHMAD & Co.',
   '/contact': 'Contact Us | IJAZ AHMAD & Co.',
+  ...Object.fromEntries(services.map(({ slug, title }) => [`/services/${slug}`, `${title} | IJAZ AHMAD & Co.`])),
 };
 
 const legacyRoutes = {
@@ -92,6 +96,10 @@ export default function App() {
           )} />
           <Route path="/about" element={<><About /><WhyUs /><Approach /></>} />
           <Route path="/services" element={<Services onDiscussService={discussService} />} />
+          {services.map((service) => (
+            <Route key={service.slug} path={`/services/${service.slug}`}
+              element={<ServiceDetail service={service} onDiscussService={discussService} />} />
+          ))}
           <Route path="/industries" element={<Industries />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/contact" element={<Contact serviceRequest={location.state?.serviceRequest ?? null} />} />

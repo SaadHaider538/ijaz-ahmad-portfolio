@@ -1,4 +1,5 @@
-﻿import { ArrowUpRight, Check } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { aboutPrinciples, approach, coreValues, industries, leadership, services, trustPoints, vision, mission, whyUs } from '../data';
 
 export function SectionHeading({ eyebrow, title, text, light = false }) {
@@ -18,10 +19,10 @@ export function Services({ onDiscussService }) {
         <SectionHeading
           eyebrow="Firm Services"
           title="Audit, Tax & Advisory Services"
-          text="Comprehensive professional support organised around the three principal service groups identified in the firm profile."
+          text="Integrated professional services to support reliable reporting, regulatory compliance and informed business decisions."
         />
         <div className="service-grid">
-          {services.map(({ icon: Icon, number, title, service, summary, items }) => (
+          {services.map(({ icon: Icon, number, title, service, slug, summary, items }) => (
             <article className="service-card" key={title}>
               <div className="card-top">
                 <span className="icon-box"><Icon /></span>
@@ -32,7 +33,14 @@ export function Services({ onDiscussService }) {
               <ul className="service-bullets">
                 {items.map((item) => <li key={item}><Check size={14} />{item}</li>)}
               </ul>
-              <button type="button" onClick={() => onDiscussService(service)}>Discuss This Service <ArrowUpRight size={16} /></button>
+              <div className="service-card-actions">
+                <Link className="service-card-details" to={`/services/${slug}`}>
+                  Explore Service <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+                <button type="button" className="service-card-enquire" onClick={() => onDiscussService(service)}>
+                  Discuss This Service <ArrowUpRight size={16} aria-hidden="true" />
+                </button>
+              </div>
             </article>
           ))}
         </div>
